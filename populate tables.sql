@@ -1,0 +1,57 @@
+SELECT * FROM ics311sp210127.chef;
+insert into chef values (001, 'Adam', 4000, '19 1st St S Minneapolis');
+insert into chef values (002, 'Justin', 3000, '3753 Emerson Ave N Minneapolis');
+insert into chef values (003, 'Harrison', 5000, '4038 Dupont Ave N Minneapolis');
+SELECT * FROM ics311sp210127.chef;
+select * from customer;
+insert into customer values (999, 'Tomlinson', '1016 Holly Ln Burnsville');
+insert into customer values (998, 'Anthony', '12962 Nicollet Ave Burnsville');
+insert into customer values (997, 'Eric', '2732 Brunswick Ave S Minneapolis');
+select * from customer;
+select * from ingredient;
+insert into supplier values ('s01', 'Fareway', 'Minneapolis');
+insert into supplier values ('s02', 'Aldi', 'Bunrsville');
+insert into supplier values ('s03', 'Sams Club', 'Eagan');
+insert into ingredient values ('i01', 's01', 120, 10, 'Pork chop');
+insert into ingredient values ('i36', 's02', 15, 30, 'Shrimp');
+insert into ingredient values ('i35', 's01', 6, 24, 'Onion');
+select * from supplier;
+select * from ingredient;
+select * from waiter;
+
+insert into waiter values ('w01', 'Jen', 2500, '8646 Carriage Hill Ct Savage');
+insert into waiter values ('w02', 'Ella', 2000, '103 5th St Hornick');
+insert into waiter values ('w03', 'Ryan', 3200, '13764 Kiowa Rd Apple Valley');
+select * from meal;
+insert into meal values ('m01', 'Eggroll', 5);
+insert into meal values ('m35', 'Rice platter', 10);
+insert into meal values ('m68', 'Seafood soup', 12);
+
+select * from orders;
+insert into orders values ('o0001', 999, 'w01', 20);
+insert into orders values ('o0002', 998, 'w02', 22);
+insert into orders values ('o0003', 997, 'w03', 15);
+select * from meal_w_ingredient;
+insert into meal_w_ingredient values ('m01', 'i01');
+
+insert into meal_w_ingredient values ('m35', 'i35');
+insert into meal_w_ingredient values ('m68', 'i35');
+
+insert into meal_w_ingredient values ('m01', 'i36');
+select * from meal;
+insert into meal_made values (001, 'm35');
+insert into meal_made values (001,'m01');
+insert into meal_made values (003, 'm68');
+select * from order_line;
+insert into order_line values ('o0001', 'Rice Platter', 2);
+insert into order_line values ('o0002', 'Seafood Soup', 2);
+select * from order_line;
+update order_line set meal_id = 'm68' where orders_id = 'o0002';
+select * from order_line;
+insert into order_line values ('o0003', 'Eggroll', 1, 'm01');
+insert into order_line values ('o0003', 'Rice Platter', 1, 'm35');
+select * from bill;
+select * from orders;
+insert into bill values ('b0001', 999, 'o0001', str_to_date('04-25-2021','%m-%d-%Y'), 20);
+insert into bill values ('b0002', 998, 'o0002', str_to_date('04-23-2021','%m-%d-%Y'), 22);
+insert into bill values ('b0003', 997, 'o0003', str_to_date('04-04-2021','%m-%d-%Y'), 15);
